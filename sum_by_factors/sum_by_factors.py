@@ -1,5 +1,6 @@
 import math
 import numpy as np
+from numpy import uint64
 
 
 def primes_in_list(x):
@@ -15,10 +16,9 @@ def primes_in_list(x):
 def sum_for_list(numbers):
     result = []
     y = np.array(lst)
-
     for i in primes_in_list(numbers):
-        z = np.sum(y[y % i == 0])
-        if z != 0: result.append([i, abs(z)])
+        z = np.sum(y[y % i == 0],dtype= uint64)
+        if z != 0: result.append([i, z])
     print(result)
     return result
 
@@ -39,8 +39,8 @@ def sum_for_list(numbers):
     max_in_lst = max(lst, key=abs)
     sum_of_numbers(lst, max_in_lst)"""
 
-# lst = [x for x in range(100001)]
+lst = [x for x in range(100001)]
 
-lst = [15, 21, 24, 30, 45, 150, 121341]
+# lst = [15, 21, 24, 30, 45, 150,3241, 121341]
 sum_for_list(lst)
 # profiling(lst, max_in_lst)
